@@ -121,22 +121,11 @@ footer {
 
 /* Styles pour uniformiser les images d'avatar des apprenants */
 .apprenant-photo {
-    /* Utilise une variable pour permettre changement facile de la taille par défaut */
-    --avatar-size: 120px;
-    width: var(--avatar-size);
-    height: var(--avatar-size);
+    width: 120px;         /* largeur fixe */
+    height: 120px;        /* hauteur fixe */
     object-fit: cover;    /* recadrage centré sans déformation */
     display: block;
     border-radius: 8px;   /* coins arrondis (optionnel) */
-}
-
-/* Responsive: réduire la taille des avatars sur petits écrans */
-@media (max-width: 600px) {
-    .apprenant-photo { --avatar-size: 80px; }
-}
-
-@media (min-width: 1200px) {
-    .apprenant-photo { --avatar-size: 150px; }
 }
 
 /* Option: réduire l'espacement autour des cartes si nécessaire */

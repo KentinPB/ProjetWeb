@@ -50,22 +50,27 @@ function createCard(apprenant, index) {
     };
     card.appendChild(avatar);
 
+    const infoContainer = document.createElement("div");
+    infoContainer.className = "apprenant-info";
+
     const title = document.createElement("h3");
     title.textContent = apprenant.nom || "";
     title.className = "apprenant-nom";
-    card.appendChild(title);
+    infoContainer.appendChild(title);
 
     const subtitle = document.createElement("p");
     subtitle.textContent = apprenant.prenom || "";
     subtitle.className = "apprenant-prenom";
-    card.appendChild(subtitle);
+    infoContainer.appendChild(subtitle);
 
     const button = document.createElement("button");
     button.type = "button";
     button.className = "apprenant-detail-btn";
     button.textContent = "Détail";
     button.dataset.index = index;
-    card.appendChild(button);
+    infoContainer.appendChild(button);
+
+    card.appendChild(infoContainer);
 
     return card;
 }
