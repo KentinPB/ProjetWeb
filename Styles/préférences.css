@@ -1,0 +1,62 @@
+.préférences-section {
+    background-color: #b89494;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+}
+
+.preferences-form {
+    background-color: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: min(600px, 100%);
+    box-sizing: border-box;
+    margin: 0 auto;
+    align-self: center;
+}
+
+.preferences-form label {
+    font-weight: bold;
+    text-align: center;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: row;
+    /* Aligne les boutons et labels sur la même ligne */
+    align-items: center;
+    /* Aligne verticalement les boutons avec le texte */
+    gap: 15px;
+    /* Espace entre chaque bloc bouton/label */
+
+}
+
+.radio-group label {
+    font-weight: normal;
+    /* Optionnel : pour que "Liste" et "Carte" ne soient pas en gras comme les titres */
+    margin-right: 10px;
+    /* Espace après le mot "Liste" avant le bouton suivant */
+    cursor: pointer;
+    /* Change le curseur au survol du texte */
+}
+
+.radio-group input[type="radio"] {
+    cursor: pointer;
+    /* Change le curseur au survol du bouton radio */
+}
+
+.btn-group {
+    display: flex;
+    justify-content: center;
+    /* Aligne le bouton à droite */
+    margin-top: 20px;
+    /* Espace au-dessus du bouton */
+    gap: 50px;
+    /* Espace entre les boutons */
+}

@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+body.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+body.dark-mode header,
+body.dark-mode footer,
+body.dark-mode .préférences-section,
+body.dark-mode .preferences-form,
+body.dark-mode .sommaire ul li {
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+}
+
+body.dark-mode .preferences-form {
+    background-color: #1e1e1e;
+}
+
+body.dark-mode a {
+    color: #8ecae6;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode button {
+    background-color: #2b2b2b;
+    color: #f1f1f1;
+    border-color: #555;
+}
+
+main {
+    flex: 1;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    background-color: #747579;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.logo {
+
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.page-title {
+    color: #fff;
+    display: inline-block;
+    margin-left: 20%;
+}
+
+.sommaire {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 20%;
+}
+
+.sommaire ul {
+    list-style: none;
+}
+
+.sommaire ul li {
+    display: inline-block;
+    margin-right: 30px;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.sommaire ul li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+}
+
+.sommaire ul li a:hover {
+    color: #747579;
+    font-weight: 700;
+}
+
+form {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 70%;
+}
+
+footer {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+    background-color: #747579;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+/* Styles pour uniformiser les images d'avatar des apprenants */
+.apprenant-photo {
+    /* Utilise une variable pour permettre changement facile de la taille par défaut */
+    --avatar-size: 120px;
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    object-fit: cover;    /* recadrage centré sans déformation */
+    display: block;
+    border-radius: 8px;   /* coins arrondis (optionnel) */
+}
+
+/* Responsive: réduire la taille des avatars sur petits écrans */
+@media (max-width: 600px) {
+    .apprenant-photo { --avatar-size: 80px; }
+}
+
+@media (min-width: 1200px) {
+    .apprenant-photo { --avatar-size: 150px; }
+}
+
+/* Option: réduire l'espacement autour des cartes si nécessaire */
+.apprenant-carte {
+    display: inline-block;
+    vertical-align: top;
+    margin: 8px;
+}

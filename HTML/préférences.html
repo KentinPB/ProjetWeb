@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de préférences</title>
+    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="../Styles/préférences.css">
+    <script type="module" src="../Scripts/main.js"></script>
+</head>
+
+<body>
+    <header>
+        <img src="../Images/logo.png" alt="Logo de l'école" class="logo">
+        <h1 class="page-title">Promo EDWM2605FT</h1>
+        <nav class="sommaire">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="préférences.html">Préférences</a></li>
+                <li><a href="carte.html">Carte</a></li>
+                <li><a href="informations.html">Informations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="préférences-section">
+            <h2> Préférences du site</h2>
+            <p class="préférences-text"> Cette page est dédiée aux préférences du site. Vous pouvez personnaliser votre
+                expérience en choisissant les options qui vous conviennent le mieux. Que ce soit pour le thème, la
+                langue ou les notifications, nous avons tout prévu pour que vous puissiez profiter pleinement de notre
+                site. N'hésitez pas à explorer les différentes options et à ajuster les paramètres selon vos besoins.
+                Votre confort et votre satisfaction sont notre priorité.</p>
+            <form class="preferences-form">
+                <label for="theme">Choisissez un thème :</label>
+                <select id="theme" name="theme">
+                    <option value="clair">Clair</option>
+                    <option value="sombre">Sombre</option>
+                    <option value="auto" selected>Automatique</option>
+                </select>
+
+                <label for="langue">Choisissez une langue :</label>
+                <select id="langue" name="langue">
+                    <option value="francais">Français</option>
+                    <option value="anglais">Anglais</option>
+                </select>
+
+                <label for="affichage"> Format d'affichage de la liste des apprenants :</label>
+                <div class="radio-group">
+                    <input type="radio" id="liste" name="affichage" value="liste" checked>
+                    <label for="liste">Liste</label>
+
+                    <input type="radio" id="carte" name="affichage" value="carte">
+                    <label for="carte">Carte</label>
+                </div>
+
+                <div class="btn-group">
+                    <input type="button" value="Retour à l'accueil" class="btn-retour"
+                        onclick="window.location.href='index.html'">
+                    <button type="submit" class="btn-enregistrer">Enregistrer les préférences</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Promo EDWM2605FT. Tous droits réservés.</p>
+    </footer>
+</body>
+
+</html>

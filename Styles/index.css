@@ -1,0 +1,163 @@
+/* Styles pour l'affichage de la liste des apprenants */
+.apprenants-tableau {
+    width: 100%;
+    border-collapse: collapse;
+    max-height: 480px;
+    overflow-y: auto;
+    display: block;
+    /* pour permettre le scroll vertical sur tbody */
+    border: 2px solid #222;
+}
+
+.apprenants-tableau thead {
+    background: #f2f2f2;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.apprenants-tableau th,
+.apprenants-tableau td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.apprenants-tableau tbody {
+    display: block;
+    max-height: 360px;
+    overflow-y: auto;
+}
+
+.apprenants-tableau thead tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.apprenants-tableau tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.apprenants-tableau tbody tr:nth-child(even) {
+    background: #f7f7f7;
+}
+
+.lien-detail {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.lien-detail:hover {
+    text-decoration: underline;
+}
+
+/* Styles pour cartes (fallback) */
+.apprenant-carte {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 4px;
+}
+
+.apprenant-photo {
+    width: 100%;
+    max-width: 120px;
+    height: auto;
+    display: block;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.apprenants-section {
+    background-color: #c07e7e;
+    padding: 20px;
+}
+
+.apprenants-liste {
+    background-color: #a07f7f;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.affichage-carte {
+    background-color: #21318a;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+.affichage-carte .apprenant-carte {
+    background-color: #fff;
+    border: 1px solid #555;
+    border-radius: 16px;
+    padding: 20px;
+    width: calc(25% - 15px);
+    min-width: 220px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+/* .affichage-carte .apprenant-anecdotes,
+.affichage-carte .apprenant-anecdotes-inconnues,
+.affichage-carte .apprenant-coordonnees,
+.affichage-carte .apprenant-coordonnees-inconnues {
+    display: none;
+} */
+
+.apprenant-nom {
+    margin: 0 0 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.apprenant-prenom {
+    margin: 0 0 16px;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.apprenant-detail-btn {
+    margin-top: 12px;
+    padding: 10px 16px;
+    background-color: #1a73e8;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.apprenant-detail-btn:hover {
+    background-color: #1558b0;
+}
+
+.affichage-liste {
+    background-color: #d3d3d3;
+    display: block;
+}
+
+.affichage-liste .apprenant-carte {
+    background-color: #fff;
+    border: 1px solid #000000;
+    border-radius: 0;
+    padding: 15px;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 20px;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}

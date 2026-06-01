@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page de carte</title>
+    <link rel="stylesheet" href="../Styles/style.css">
+    <link rel="stylesheet" href="../Styles/carte.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+    <script type="module" src="../Scripts/map.js"></script>
+    <script type="module" src="../Scripts/main.js"></script>
+</head>
+
+<body>
+    <header>
+        <img src="../Images/logo.png" alt="Logo de l'école" class="logo">
+        <h1 class="page-title">Promo EDWM2605FT</h1>
+        <nav class="sommaire">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="préférences.html">Préférences</a></li>
+                <li><a href="carte.html">Carte</a></li>
+                <li><a href="informations.html">Informations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="carte-section">
+            <h2> Carte</h2>
+            <div id="map" class="carte-container">
+                <!-- La carte sera affichée ici -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Promo EDWM2605FT. Tous droits réservés.</p>
+    </footer>
+</body>
+
+</html>

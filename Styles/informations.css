@@ -1,0 +1,95 @@
+main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.informations-section {
+    background-color: #b89494;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.nbr-apprenants {
+    background-color: #b89494;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.description-liens {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #b89494;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.Description {
+    background-color: #917b7b;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.description-text {
+    background-color: #b89494;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.Liens {
+    background-color: #917b7b;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.categorie-liens {
+    background-color: #b89494;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+}
+
+.categorie-liens h3 {
+    margin-bottom: 10px;
+    text-decoration: underline;
+    text-align: center;
+}
+
+nav {
+    background-color: #747579;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-retour {
+    background-color: #747579;
+    border-radius: 10px;
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin: 20px;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.btn-retour:hover {
+    background-color: #917b7b;
+}
