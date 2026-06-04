@@ -1,16 +1,200 @@
-/* Styles pour l'affichage de la liste des apprenants */
+/* =========================================================================
+   SECTION PRINCIPALE (CADRE PARENT CONTENANT TOUT LE COMPOSANT)
+   ========================================================================= */
+.apprenants-section {
+    background: var(--surface);
+    padding: 26px;
+    margin: 20px auto;
+    border-radius: 30px;
+    /* Élargissement des conteneurs pour maximiser la place et annuler les débordements */
+    width: min(100%, 1400px);
+    max-width: 90vw;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    box-sizing: border-box; /* Crucial pour inclure le padding dans le calcul de largeur */
+}
+
+.apprenants-section h2 {
+    margin: 0 0 18px;
+    color: var( #3de3ff);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: clamp(1.9rem, 2.5vw, 2.4rem);
+}
+
+.apprenants-section form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 0;
+}
+
+/* =========================================================================
+   ZONE TECHNIQUE INTERNE DE RÉCEPTION DE L'AFFICHAGE JS
+   ========================================================================= */
+.apprenants-liste {
+    background: var(--surface);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-top: 24px;
+    padding: 18px;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    width: 100%;
+    align-items: stretch;
+    align-content: flex-start;
+    box-sizing: border-box;
+}
+
+/* =========================================================================
+   MODE AFFICHAGE 1 : TROMBINOSCOPE (CARTES FLEXBOX AVEC CENTRAGE)
+   ========================================================================= */
+.affichage-carte {
+    background: var(--surface-strong);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Maintient l'alignement centré parfait d'origine */
+    gap: 20px;
+    padding: 24px;
+    border-radius: 24px;
+    border: 1px solid rgba(61, 227, 255, 0.25); 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.affichage-carte .apprenant-carte {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 22px;
+    /* Format d'origine conservé pour les moniteurs de bureau */
+    width: calc(25% - 20px); 
+    min-width: 220px;
+    max-width: 100%; /* Empêche physiquement le bloc de déborder sur les téléphones étroits */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.affichage-carte .apprenant-carte:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 30px rgba(255, 45, 149, 0.18);
+}
+
+/* Modèle de secours général d'une carte */
+.apprenant-carte {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    padding: 18px;
+    margin: 8px 0;
+    border-radius: 18px;
+    box-shadow: 0 0 20px rgba(61, 227, 255, 0.1);
+    box-sizing: border-box;
+}
+
+/* =========================================================================
+   COMPOSANTS STRUCTURANTS INTERNES AUX CARTES
+   ========================================================================= */
+.apprenant-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 0 12px;
+    box-sizing: border-box;
+}
+
+/* FIXATION DE LA TAILLE ET DE LA GESTION DES PHOTOS */
+.apprenant-photo {
+    width: 140px;          /* Largeur uniforme stricte pour toutes les images */
+    height: 140px;         /* Hauteur identique pour garantir un rendu 1:1 parfait */
+    display: block;
+    margin-bottom: 12px;
+    border-radius: 18px;
+    object-fit: cover;     /* Recadre et centre l'image si ses proportions de base ne sont pas carrées */
+    border: 1px solid rgba(255, 45, 149, 0.45);
+    box-shadow: 0 0 22px rgba(255, 45, 149, 0.18);
+}
+
+.apprenant-nom {
+    margin: 0 0 10px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ff96d0;
+    text-shadow: 0 0 16px rgba(255, 45, 149, 0.35);
+}
+
+.apprenant-prenom {
+    margin: 0 0 16px;
+    font-size: 0.95rem;
+    color: #b0c7ff;
+}
+
+.apprenant-detail-btn {
+    margin-top: 12px;
+    padding: 12px 18px;
+    background: linear-gradient(135deg, rgba(255, 45, 149, 0.95), rgba(61, 227, 255, 0.9));
+    color: #08101f;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 0 18px rgba(61, 227, 255, 0.2);
+}
+
+.apprenant-detail-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 45, 149, 1), rgba(61, 227, 255, 1));
+    transform: translateY(-1px);
+}
+
+/* =========================================================================
+   MODE AFFICHAGE 2 : COMPOSANTS EN TABLEAU / LISTE CONTINUE
+   ========================================================================= */
+.affichage-liste {
+    background: var(--surface-strong);
+    display: block;
+    border-radius: 24px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    box-sizing: border-box;
+}
+
+.affichage-liste .apprenant-carte {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 18px;
+    margin: 0 0 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 18px;
+    align-items: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
 .apprenants-tableau {
     width: 100%;
     border-collapse: collapse;
     max-height: 480px;
     overflow-y: auto;
     display: block;
-    /* pour permettre le scroll vertical sur tbody */
-    border: 2px solid #222;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: var(--shadow);
 }
 
 .apprenants-tableau thead {
-    background: #f2f2f2;
+    background: var(--surface-strong);
     position: sticky;
     top: 0;
     z-index: 2;
@@ -18,9 +202,10 @@
 
 .apprenants-tableau th,
 .apprenants-tableau td {
-    padding: 8px 12px;
+    padding: 10px 14px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    color: var(--text);
 }
 
 .apprenants-tableau tbody {
@@ -29,12 +214,7 @@
     overflow-y: auto;
 }
 
-.apprenants-tableau thead tr {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-}
-
+.apprenants-tableau thead tr,
 .apprenants-tableau tbody tr {
     display: table;
     width: 100%;
@@ -42,11 +222,15 @@
 }
 
 .apprenants-tableau tbody tr:nth-child(even) {
-    background: #f7f7f7;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.apprenants-tableau tbody tr:hover {
+    background: rgba(255, 45, 149, 0.12);
 }
 
 .lien-detail {
-    color: #1a73e8;
+    color: #3de3ff;
     text-decoration: none;
 }
 
@@ -54,121 +238,176 @@
     text-decoration: underline;
 }
 
-/* Styles pour cartes (fallback) */
-.apprenant-carte {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 4px;
-}
-
-.apprenant-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
+/* =========================================================================
+   FENÊTRES COMPOSANTS MODALES (OVERLAY + POPUP)
+   ========================================================================= */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
     width: 100%;
-    padding: 0 12px;
-    box-sizing: border-box;
+    height: 100%;
+    background-color: rgba(1, 4, 12, 0.8);
+    animation: fadeIn 0.3s ease-in;
 }
 
-.apprenant-photo {
-    width: 100%;
-    max-width: 120px;
-    height: auto;
-    display: block;
-    margin-bottom: 12px;
-    border-radius: 8px;
-    object-fit: cover;
-}
-
-.apprenants-section {
-    background-color: #c07e7e;
-    padding: 20px;
-}
-
-.apprenants-liste {
-    background-color: #a07f7f;
+.modal.active {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.affichage-carte {
-    background-color: #21318a;
-    display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-    padding: 20px;
+    align-items: center;
 }
 
-.affichage-carte .apprenant-carte {
-    background-color: #fff;
-    border: 1px solid #555;
-    border-radius: 16px;
-    padding: 20px;
-    width: calc(20% - 15px);
-    min-width: 220px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background-color: var(--surface);
+    padding: 30px;
+    border-radius: 24px;
+    max-width: 520px;
+    width: 90%;
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.12);
+    border: 1px solid var(--border);
+    position: relative;
+    animation: slideIn 0.3s ease-out;
+    color: var(--text);
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-close {
+    position: absolute;
+    right: 16px;
+    top: 14px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #b9cffe;
+    cursor: pointer;
+}
+
+.modal-close:hover {
+    color: #ffffff;
+}
+
+.modal-body {
     text-align: center;
 }
 
-/* .affichage-carte .apprenant-anecdotes,
-.affichage-carte .apprenant-anecdotes-inconnues,
-.affichage-carte .apprenant-coordonnees,
-.affichage-carte .apprenant-coordonnees-inconnues {
-    display: none;
-} */
+.modal-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 1px solid rgba(61, 227, 255, 0.4);
+}
 
-.apprenant-nom {
-    margin: 0 0 8px;
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
+.modal-body h2 {
+    margin: 15px 0 5px;
+    font-size: 1.5rem;
+    color: var(--text);
     text-transform: uppercase;
 }
 
-.apprenant-prenom {
-    margin: 0 0 16px;
-    font-size: 0.95rem;
-    color: #444;
+.modal-body > p {
+    margin: 8px 0;
+    color: var(--text);
+    line-height: 1.6;
 }
 
-.apprenant-detail-btn {
-    margin-top: 12px;
-    padding: 10px 16px;
-    background-color: #1a73e8;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 700;
+.modal-body > p:nth-of-type(2) {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--muted);
 }
 
-.apprenant-detail-btn:hover {
-    background-color: #1558b0;
+/* =========================================================================
+   RESPONSIVE DESIGN (BREAKPOINTS POUR SMARTPHONES ET TABLETTES)
+   ========================================================================= */
+@media screen and (max-width: 900px) {
+    .apprenants-section {
+        max-width: 95vw; /* Donne de l'air aux côtés sur petit écran */
+        padding: 16px;
+    }
+
+    .affichage-carte {
+        padding: 16px 12px;
+    }
+
+    .affichage-carte .apprenant-carte {
+        width: 100%;  /* Passage forcé des cartes à 100% sur mobile */
+        min-width: 0; /* Éradication de la contrainte minimale responsable du débordement */
+    }
+
+    .affichage-liste .apprenant-carte {
+        width: 100%;
+        grid-template-columns: 1fr; /* Le tableau en mode bloc s'empile verticalement */
+    }
 }
 
-.affichage-liste {
-    background-color: #d3d3d3;
-    display: block;
+/* Conversion responsive de la structure tableau HTML brut en blocs empilés */
+@media (max-width: 575.98px) {
+    .apprenants-tableau {
+        display: block;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    .apprenants-tableau thead {
+        display: none; /* Masque les têtes de colonnes devenues inutiles */
+    }
+
+    .apprenants-tableau tbody {
+        display: block;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .apprenants-tableau tbody tr {
+        display: block;
+        background: var(--surface);
+        margin-bottom: 12px;
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+    }
+
+    .apprenants-tableau td {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px 0;
+        border: none;
+    }
+
+    /* Récupération des étiquettes injectées par le JS pour créer des labels sur mobile */
+    .apprenants-tableau td::before {
+        content: attr(data-label) ": ";
+        font-weight: 700;
+        color: var(--muted);
+        margin-right: 8px;
+    }
+
+    .apprenants-tableau td .lien-detail {
+        white-space: nowrap;
+    }
 }
 
-.affichage-liste .apprenant-carte {
-    background-color: #fff;
-    border: 1px solid #000000;
-    border-radius: 0;
-    padding: 15px;
-    margin: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr auto;
-    gap: 20px;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
+/* Ajustements graphiques pour le Mode Sombre */
+body.dark-mode .modal-content {
+    background-color: #2a2a2a;
+    color: var(--text);
+}
+body.dark-mode .modal-body h2 {
+    color: #f1f1f1;
+}
+body.dark-mode .modal-body > p {
+    color: #b0b0b0;
 }

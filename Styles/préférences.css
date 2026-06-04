@@ -1,62 +1,117 @@
+/* =========================================================================
+   CONTENEUR PRINCIPAL DE LA SECTION DE CONFIGURATION
+   ========================================================================= */
 .préférences-section {
-    background-color: #b89494;
+    background: var(--surface);
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px;
+    flex-direction: column;     /* Aligne le titre de section et le formulaire verticalement */
+    align-items: center;        /* Centre tout horizontalement */
+    border-radius: 28px;
+    padding: 32px;
+    margin: 20px auto;
+    border: 1px solid var(--border);
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.12);
+    max-width: 1100px;          /* Aligné sur la grille générale du site */
+    color: var(--text);
 }
 
+/* =========================================================================
+   STRUCTURE INTERNE DU FORMULAIRE DE PRÉFÉRENCES
+   ========================================================================= */
 .preferences-form {
-    background-color: #f2f2f2;
-    padding: 20px;
-    border-radius: 10px;
+    background: var(--surface-strong); /* Sur-épaisseur visuelle pour bien isoler le formulaire */
+    padding: 28px;
+    border-radius: 24px;
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: min(600px, 100%);
+    flex-direction: column;     /* Empile les questions (Thème, Langue, Format) les unes sous les autres */
+    gap: 18px;                  /* Espacement vertical uniforme entre chaque ligne de question */
+    width: min(680px, 100%);    /* S'adapte à 100% de la largeur disponible sans dépasser 680px */
     box-sizing: border-box;
     margin: 0 auto;
     align-self: center;
+    border: 1px solid rgba(61, 227, 255, 0.25); 
 }
 
+/* Intitulés des questions */
 .preferences-form label {
-    font-weight: bold;
-    text-align: center;
+    font-weight: 600;
+    color: var(--text);
 }
 
+.preferences-form fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+/* Uniformisation visuelle des contrôles internes du formulaire */
+.preferences-form select,
+.preferences-form input[type="button"],
+.preferences-form button {
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+/* =========================================================================
+   ALIGNEMENT DE COMPOSANTS PARALLÈLES (BOUTONS RADIOS CORRESPONDANTS)
+   ========================================================================= */
 .radio-group {
     display: flex;
-    flex-direction: row;
-    /* Aligne les boutons et labels sur la même ligne */
     align-items: center;
-    /* Aligne verticalement les boutons avec le texte */
-    gap: 15px;
-    /* Espace entre chaque bloc bouton/label */
-
+    justify-content: center; /* Centre horizontalement */
+    gap: 20px;               /* Ajoute un espace entre les boutons */
+    margin-top: 10px;        /* Ajoute un peu d'espace avec le titre */
 }
 
+/* Labels associés aux petits boutons ronds */
 .radio-group label {
-    font-weight: normal;
-    /* Optionnel : pour que "Liste" et "Carte" ne soient pas en gras comme les titres */
-    margin-right: 10px;
-    /* Espace après le mot "Liste" avant le bouton suivant */
-    cursor: pointer;
-    /* Change le curseur au survol du texte */
+    font-weight: 500;
+    cursor: pointer;            /* Transforme le pointeur de souris en main cliquable */
+    color: #3a56a1;             /* Teinte bleutée distinctive */
 }
 
 .radio-group input[type="radio"] {
     cursor: pointer;
-    /* Change le curseur au survol du bouton radio */
 }
 
+/* =========================================================================
+   BLOC INFÉRIEUR DE BOUTONS D'ACTION (RETOUR / VALIDER)
+   ========================================================================= */
 .btn-group {
     display: flex;
-    justify-content: center;
-    /* Aligne le bouton à droite */
-    margin-top: 20px;
-    /* Espace au-dessus du bouton */
-    gap: 50px;
-    /* Espace entre les boutons */
+    justify-content: center;    /* Centre la rangée de boutons */
+    flex-wrap: wrap;
+    margin-top: 24px;
+    gap: 16px;
+}
+
+/* Conception graphique des boutons d'actions principaux */
+.btn-retour,
+.btn-enregistrer {
+    /* Dégradé diagonal néon bleu/rose */
+    background: linear-gradient(135deg, rgba(61, 227, 255, 0.9), rgba(255, 45, 149, 0.9));
+    color: #08101f;             /* Écritures sombres pour trancher avec la puissance du dégradé */
+    border: none;               /* Supprime la bordure par défaut des navigateurs */
+    border-radius: 16px;
+    padding: 14px 26px;
+    cursor: pointer;
+    font-weight: 700;           /* Texte en gras prononcé */
+    box-shadow: 0 0 20px rgba(61, 227, 255, 0.18);
+}
+
+/* Effets visuels réactifs lors du passage de la souris */
+.btn-retour:hover,
+.btn-enregistrer:hover {
+    transform: translateY(-1px); /* Soulève discrètement le bouton */
+    opacity: 0.98;              /* Augmente la densité de brillance */
+}
+
+/* =========================================================================
+   RESPONSIVE DESIGN (BREAKPOINT ÉCRANS SMARTPHONES ÉTROITS)
+   ========================================================================= */
+@media screen and (max-width: 700px) {
+    .preferences-form {
+        width: 100%;            /* Le formulaire s'étale sur la totalité de l'écran du téléphone */
+        padding: 22px;          /* Légère réduction des marges internes pour gagner de l'espace de lecture */
+    }
 }

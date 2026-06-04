@@ -1,136 +1,408 @@
+/* =========================================================================
+   IMPORTS ET POLICES DE CARACTÈRES
+   ========================================================================= */
+/* Importation de la police Roboto de Google Fonts (poids régulier, moyen et gras) */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
+/* =========================================================================
+   VARIABLES DE CONCEPTION GLOBALES (THÈME CLAIR CYBERPUNK ADOUCI)
+   ========================================================================= */
+:root {
+    /* Changement complet pour un fond moins agressif (fini le blanc pur flash) */
+    --bg-900: #eef2f7;          /* Fond principal gris-bleu très doux, reposant pour les yeux */
+    --bg-800: #dfe6f0;          /* Nuance secondaire légèrement plus sombre pour le dégradé */
+    
+    /* Effet de verre givré teinté pour adoucir les blocs de texte */
+    --surface: rgba(233, 239, 248, 0.85);        /* Surface claire translucide teintée bleu/gris */
+    --surface-strong: rgba(225, 232, 243, 0.95); /* Pour les sections denses nécessitant plus d'opacité */
+    
+    /* Typographie et Contrastes */
+    --text: #1a2333;            /* Bleu-noir profond pour une excellente lisibilité sans la dureté du noir pur */
+    --muted: #5c6b84;           /* Gris-bleu intermédiaire pour les textes secondaires */
+    
+    /* Accents Cyberpunk Lumineux */
+    --accent: #ff2d95;          /* Rose Cyberpunk signature */
+    --accent-2: #00b4d8;        /* Bleu Cyan ajusté pour une lisibilité parfaite en mode clair */
+    
+    /* Bordures et Ombres Néo-Rétro */
+    --border: rgba(255, 45, 149, 0.22);          /* Bordure fine teintée rose par défaut */
+    --shadow: 0 8px 32px rgba(92, 107, 132, 0.15); /* Ombre diffuse douce, typée interface moderne */
+}
+
+/* Base HTML : force la hauteur à 100% pour que le body puisse s'étendre correctement */
 html {
     height: 100%;
 }
 
+/* =========================================================================
+   STYLE DU CORPS DE PAGE (BODY)
+   ========================================================================= */
 body {
-    min-height: 100vh;
+    min-height: 100vh;          /* Couvre au minimum toute la hauteur de l'écran visible */
     display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
+    flex-direction: column;     /* Aligne le header, main, et footer verticalement */
+    overflow-x: hidden;         /* Sécurité anti-débordement horizontal */
+    margin: 0;
+    color: var(--text);         /* Applique la variable de texte globale */
+    
+    /* Double fond : On réduit l'opacité du halo rose (0.08) pour ne pas brûler la rétine en mode clair */
+    background: radial-gradient(circle at top right, rgba(255, 45, 149, 0.08), transparent 30%),
+                linear-gradient(180deg, var(--bg-900) 0%, var(--bg-800) 50%, #d5deea 100%);
+    background-attachment: fixed;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
 }
 
+/* =========================================================================
+   SURCHARGE POUR LE THÈME SOMBRE (DARK MODE)
+   ========================================================================= */
 body.dark-mode {
-    background-color: #121212;
-    color: #f1f1f1;
+    --bg-900: #050810;          /* Fond de nuit profond */
+    --bg-800: #091025;          /* Fond de nuit secondaire */
+    --surface: rgba(9, 16, 37, 0.92);
+    --surface-strong: rgba(12, 20, 48, 0.98);
+    --text: #e7f1ff;            /* Texte blanc bleuté lumineux */
+    --muted: #9cb6e8;           /* Texte secondaire lisible sur fond sombre */
+    --accent: #ff2d95;
+    --accent-2: #3de3ff;        /* Bleu néon vif */
+    --border: rgba(255, 45, 149, 0.25); /* Bordures teintées de rose en mode nuit */
+    /* Dégradé de fond réadapté pour l'ambiance nocturne */
+    background: radial-gradient(circle at top right, rgba(255, 45, 149, 0.12), transparent 20%),
+                linear-gradient(180deg, var(--bg-900) 0%, var(--bg-800) 45%, #081622 100%);
+    background-attachment: fixed;            
+    color: var(--text);
 }
 
+/* Force les grands conteneurs à adopter la couleur de surface sombre */
 body.dark-mode header,
 body.dark-mode footer,
 body.dark-mode .préférences-section,
-body.dark-mode .preferences-form,
-body.dark-mode .sommaire ul li {
-    background-color: #2a2a2a;
-    color: #f1f1f1;
-}
-
 body.dark-mode .preferences-form {
-    background-color: #1e1e1e;
+    background-color: var(--surface-strong);
+    color: var(--text);
 }
 
+/* Ajustement stylistique des puces de sommaire en mode sombre */
+body.dark-mode .sommaire ul li {
+    background-color: #101624;
+    border-color: rgba(61, 227, 255, 0.35);
+}
+
+/* Change la couleur des liens hypertexte pour le bleu néon plus lisible */
 body.dark-mode a {
-    color: #8ecae6;
+    color: var(--accent-2);
 }
 
+/* Assombrit les éléments de formulaires et de contrôles (inputs, sélecteurs, boutons) */
 body.dark-mode input,
 body.dark-mode select,
 body.dark-mode button {
-    background-color: #2b2b2b;
-    color: #f1f1f1;
-    border-color: #555;
+    background-color: #131b2f;
+    color: var(--text);
+    border-color: #2f3951;
 }
 
+/* =========================================================================
+   STRUCTURE ET RÉGLES UNIVERSELLES
+   ========================================================================= */
+/* Zone de contenu principale : prend tout l'espace disponible restant entre le header et le footer */
 main {
     flex: 1;
+    padding: 0 1rem 2rem;
 }
 
+/* Box-sizing universel : intègre les bordures et paddings directement dans le calcul des largeurs */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
 }
 
+/* =========================================================================
+   COMPOSANT EN-TÊTE (HEADER)
+   ========================================================================= */
 header {
-    background-color: #747579;
-    border-radius: 10px;
-    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;            /* Permet aux éléments internes de s'empiler sur petit écran */
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: var(--surface);
+    border-radius: 1.5rem;
+    padding: 26px 28px;
+    margin: 16px auto 0;
+    max-width: 90vw;            /* Empêche le header de coller complètement aux bords latéraux */
+    width: calc(100% - 32px);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(16px); /* Effet flouté moderne en arrière-plan (Glassmorphism) */
 }
 
-.logo {
+/* =========================================================================
+   COMPOSANT BARRE DE NAVIGATION (NAV)
+   ========================================================================= */
+.sommaire {
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
+    background: var(--surface);
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1100px;
+}
 
+nav ul {
+    list-style: none;           /* Retire les puces par défaut */
+    display: flex;
+    justify-content: center;    /* Centre les liens de navigation horizontalement */
+    gap: 20px;                  /* Espace régulier entre chaque onglet */
+    padding: 0;
+    margin: 0;
+}
+
+/* =========================================================================
+   TYPOGRAPHIES, LOGO ET ÉLÉMENTS DE DESIGN INTERNES
+   ========================================================================= */
+/* Effet de lueur sous le logo */
+.logo {
     display: inline-block;
     vertical-align: middle;
+    max-height: 72px;
+    filter: drop-shadow(0 0 18px rgba(61, 227, 255, 0.35));
 }
 
+/* Grand titre de page responsive (taille calculée dynamiquement selon la largeur de l'écran) */
 .page-title {
-    color: #fff;
+    color: var(--text);
     display: inline-block;
-    margin-left: 20%;
+    margin: 0 auto;
+    font-size: clamp(2rem, 3vw, 3rem); /* Borne min: 2rem, idéal: 3% de l'écran, max: 3rem */
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-shadow: 0 0 18px rgba(255, 45, 149, 0.45); /* Lueur rose néon sous le titre */
 }
 
+/* Conteneur optionnel de sommaire ou d'ancres de navigation */
 .sommaire {
     display: inline-block;
     vertical-align: middle;
-    margin-left: 20%;
+    margin-left: 1rem;
 }
 
 .sommaire ul {
     list-style: none;
+    margin: 1rem 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
 }
 
+/* Pastilles de filtres ou de raccourcis du sommaire */
 .sommaire ul li {
-    display: inline-block;
-    margin-right: 30px;
-    border: 1px solid #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #fff;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    padding: 0.85rem 1rem;
+    border-radius: 999px;      /* Coins parfaitement arrondis (effet pilule) */
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: inset 0 0 10px rgba(59, 130, 246, 0.08);
 }
 
 .sommaire ul li a {
     text-decoration: none;
-    color: #000;
-    font-weight: 500;
+    color: var(--text);
+    font-weight: 600;
 }
 
 .sommaire ul li a:hover {
-    color: #747579;
-    font-weight: 700;
+    color: var(--accent-2);    /* Coloration au survol de la souris */
 }
 
+h2 {
+    color:  #3de3ff
+}
+
+/* Alignement générique des formulaires horizontaux légers */
 form {
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 70%;
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-left: auto;
 }
 
+/* =========================================================================
+   ELEMENTS DE FORMULAIRES GENERIQUES (INPUTS, BUTTONS, SELECTS)
+   ========================================================================= */
+button,
+input,
+select,
+textarea {
+    font: inherit;              /* Hérite automatiquement de la police Roboto globale */
+    color: var(--text);
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    transition: all 0.2s ease;  /* Transition douce lors d'une interaction */
+}
+
+/* Effet visuel lors du survol de n'importe quel champ ou bouton */
+button:hover,
+input:hover,
+select:hover,
+textarea:hover {
+    border-color: rgba(59, 130, 246, 0.6);
+}
+
+/* Configuration de confort d'usage tactile pour les champs de saisie */
+input,
+select,
+textarea {
+    min-height: 44px;           /* Hauteur minimale recommandée pour le clic sur mobile */
+    padding: 0.85rem 1rem;
+}
+
+/* =========================================================================
+   PIED DE PAGE (FOOTER BANDEAU RECOUVRANT LA LARGEUR TOTALE)
+   ========================================================================= */
 footer {
     position: relative;
     left: 50%;
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    width: 100vw;
-    background-color: #747579;
-    color: #fff;
+    width: 100vw;               /* Technique CSS pour forcer le footer à sortir du cadre parent et faire 100% d'écran */
+    background: linear-gradient(90deg, rgba(255, 45, 149, 0.8), rgba(61, 227, 255, 0.8)); /* Dégradé rose/bleu */
+    color: #041129;
     text-align: center;
-    padding: 10px;
+    padding: 14px 0;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.25);
 }
 
-/* Styles pour uniformiser les images d'avatar des apprenants */
+/* =========================================================================
+   COMPOSANTS COMPLÉMENTAIRES (FALLBACKS IMAGES ET CARTES APPRENANTS)
+   ========================================================================= */
 .apprenant-photo {
-    width: 120px;         /* largeur fixe */
-    height: 120px;        /* hauteur fixe */
-    object-fit: cover;    /* recadrage centré sans déformation */
+    width: 120px;
+    height: 120px;
+    object-fit: cover;          /* Recadre les avatars sans les déformer */
     display: block;
-    border-radius: 8px;   /* coins arrondis (optionnel) */
+    border-radius: 16px;
+    border: 1px solid rgba(61, 227, 255, 0.55);
+    box-shadow: 0 0 20px rgba(61, 227, 255, 0.2);
 }
 
-/* Option: réduire l'espacement autour des cartes si nécessaire */
 .apprenant-carte {
     display: inline-block;
     vertical-align: top;
     margin: 8px;
+}
+
+/* Lissage des transitions sur les clics de boutons et labels radios */
+button,
+input[type='radio'] + label {
+    transition: all 0.25s ease;
+}
+
+/* =========================================================================
+   RESPONSIVE DESIGN : POINTS DE RUPTURE (MEDIA QUERIES)
+   ========================================================================= */
+
+/* --- 1. Petit smartphone (< 576px) --- */
+@media (max-width: 575.98px) {
+    header {
+        padding: 14px 16px;
+        border-radius: 1rem;
+        width: calc(100% - 32px);
+    }
+
+    .logo { max-height: 48px; }
+
+    .page-title {
+        font-size: 1.25rem;
+        letter-spacing: 0.12em;
+        text-align: center;
+        display: block;
+        margin: 0.5rem 0;
+    }
+
+    /* Réorganisation de l'ordre d'empilement via Flexbox */
+    .sommaire {
+        display: block;
+        width: 100%;
+        order: 3;                /* Passe en dernier tout en bas */
+        margin-top: 8px;
+    }
+    .page-title { order: 2; }    /* Titre au milieu */
+    .logo { order: 1; }          /* Logo tout en haut */
+    
+    .sommaire ul { justify-content: center; flex-wrap: wrap; gap: 8px; }
+
+    nav {
+        padding: 12px;
+        margin: 12px;
+        width: calc(100% - 24px);
+    }
+
+    nav ul { flex-direction: column; gap: 12px; } /* Navigation verticale sur mobile */
+
+    form { display: flex; width: 100%; gap: 0.5rem; justify-content: center; }
+
+    .apprenant-photo { width: 80px; height: 80px; } /* Réduction de taille des photos */
+}
+
+/* --- 2. Grand smartphone (576px à 768px) --- */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    header { padding: 18px 20px; }
+    .logo { max-height: 56px; }
+    .page-title { font-size: clamp(1.4rem, 4vw, 1.8rem); text-align: center; display: block; margin: .5rem 0; }
+    
+    .sommaire {
+        display: block;
+        width: 100%;
+        order: 3;
+        margin-top: 8px;
+    }
+    .page-title { order: 2; }
+    .logo { order: 1; }
+    .sommaire ul { justify-content: center; flex-wrap: wrap; gap: 10px; }
+    nav ul { flex-wrap: wrap; gap: 12px; }
+    .apprenant-photo { width: 100px; height: 100px; }
+}
+
+/* --- 3. Petite tablette (768px à 992px) --- */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    header { padding: 20px 24px; max-width: 95vw; }
+    .logo { max-height: 64px; }
+    .page-title { font-size: clamp(1.6rem, 3.2vw, 2.4rem); display: block; text-align: left; margin: 0; }
+    .sommaire { margin-left: 0.5rem; }
+    nav ul { justify-content: center; gap: 16px; }
+    .apprenant-photo { width: 110px; height: 110px; }
+}
+
+/* --- 4. Grande tablette (992px à 1200px) --- */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    header { padding: 22px 26px; max-width: 1100px; }
+    .logo { max-height: 68px; }
+    .page-title { font-size: clamp(2rem, 2.4vw, 2.6rem); }
+    nav { max-width: 1100px; padding: 18px; }
+}
+
+/* --- 5. Écran PC standard (1200px à 1400px) --- */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+    header { padding: 24px 28px; max-width: 1200px; }
+    .logo { max-height: 72px; }
+    .page-title { font-size: clamp(2.2rem, 2vw, 3rem); }
+    nav { max-width: 1200px; }
+}
+
+/* --- 6. Écran PC très large (> 1400px) --- */
+@media (min-width: 1400px) {
+    header { padding: 26px 28px; max-width: 1400px; }
+    .logo { max-height: 88px; }
+    .page-title { font-size: clamp(2.4rem, 1.8vw, 3.2rem); }
+    nav { max-width: 1400px; padding: 22px; }
 }

@@ -16,18 +16,19 @@
         <h1 class="page-title">Promo EDWM2605FT</h1>
         <nav class="sommaire">
             <ul>
-                    <li><a href="index.html" data-i18n="nav.home">Accueil</a></li>
-                    <li><a href="préférences.html" data-i18n="nav.preferences">Préférences</a></li>
-                    <li><a href="carte.html" data-i18n="nav.carte">Carte</a></li>
-                    <li><a href="informations.html" data-i18n="nav.informations">Informations</a></li>
-                </ul>
-            </nav>
-        </header>
+                <li><a href="index.html" data-i18n="nav.home">Accueil</a></li>
+                <li><a href="préférences.html" data-i18n="nav.preferences">Préférences</a></li>
+                <li><a href="carte.html" data-i18n="nav.carte">Carte</a></li>
+                <li><a href="informations.html" data-i18n="nav.informations">Informations</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
         <section class="préférences-section">
             <h2 data-i18n="preferences.heading"> Préférences du site</h2>
-            <p class="préférences-text" data-i18n="preferences.description"> Cette page est dédiée aux préférences du site. Vous pouvez personnaliser votre
+            <p class="préférences-text" data-i18n="preferences.description"> Cette page est dédiée aux préférences du
+                site. Vous pouvez personnaliser votre
                 expérience en choisissant les options qui vous conviennent le mieux. Que ce soit pour le thème, la
                 langue ou les notifications, nous avons tout prévu pour que vous puissiez profiter pleinement de notre
                 site. N'hésitez pas à explorer les différentes options et à ajuster les paramètres selon vos besoins.
@@ -46,19 +47,23 @@
                     <option value="anglais" data-i18n="preferences.langue.anglais">Anglais</option>
                 </select>
 
-                <label for="affichage" data-i18n="preferences.labelAffichage"> Format d'affichage de la liste des apprenants :</label>
-                <div class="radio-group">
-                    <input type="radio" id="liste" name="affichage" value="liste" checked>
-                    <label for="liste" data-i18n="preferences.affichage.liste">Liste</label>
+                <fieldset>
+                    <legend data-i18n="preferences.labelAffichage">Format d'affichage de la liste des apprenants :</legend>
 
-                    <input type="radio" id="carte" name="affichage" value="carte">
-                    <label for="carte" data-i18n="preferences.affichage.carte">Carte</label>
-                </div>
+                    <div class="radio-group">
+                        <input type="radio" id="liste" name="affichage" value="liste" checked>
+                        <label for="liste" data-i18n="preferences.affichage.liste">Liste</label>
+
+                        <input type="radio" id="carte" name="affichage" value="carte">
+                        <label for="carte" data-i18n="preferences.affichage.carte">Carte</label>
+                    </div>
+                </fieldset>
 
                 <div class="btn-group">
                     <input type="button" value="Retour à l'accueil" class="btn-retour" data-i18n="preferences.btnRetour"
                         onclick="window.location.href='index.html'">
-                    <button type="submit" class="btn-enregistrer" data-i18n="preferences.btnSave">Enregistrer les préférences</button>
+                    <button type="submit" class="btn-enregistrer" data-i18n="preferences.btnSave">Enregistrer les
+                        préférences</button>
                 </div>
             </form>
         </section>

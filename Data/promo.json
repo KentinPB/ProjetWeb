@@ -1,4 +1,9 @@
 {
+  "nom_promo": "EDWM2605FT",
+  "date_debut": "04-05-2026",
+  "date_fin": "23-10-2026",
+  "description": "Formation de développeur web et mobile à l'ENI Ecole Informatique",
+  "nombre_apprenants": 23,
   "apprenants": [
     {
       "id": 1,
@@ -15,13 +20,13 @@
     {
       "id": 2,
       "nom": "BEOUCHE",
-      "prenom": "Naima",
-      "ville": "",
+      "prenom": "Naïma",
+      "ville": "Metz",
       "avatar": "../Images/Avatar/BEOUCHE Naima.jpg",
-      "anecdotes": "",
+      "anecdotes": "Aventurière dans l’âme, je voyage comme Lara Croft… mais version vacances et sans danger.",
       "coordonnees": {
-        "latitude": "",
-        "longitude": ""
+        "latitude": "49.1191",
+        "longitude": "6.1727"
       }
     },
     {
@@ -64,12 +69,12 @@
       "id": 6,
       "nom": "CHABOT",
       "prenom": "Kendal",
-      "ville": "",
+      "ville": "Challans",
       "avatar": "../Images/Avatar/CHABOT Kendal.jpg",
-      "anecdotes": "",
+      "anecdotes": "Est devenu oncle à 10 ans",
       "coordonnees": {
-        "latitude": "",
-        "longitude": ""
+        "latitude": "46.8436",
+        "longitude": "-1.8749"
       }
     },
     {
@@ -88,12 +93,12 @@
       "id": 8,
       "nom": "CHIKH-MILOUD",
       "prenom": "Rahmoun",
-      "ville": "",
+      "ville": "Bourges",
       "avatar": "../Images/Avatar/CHIKH-MILOUD Rahmoun.jpg",
-      "anecdotes": "",
+      "anecdotes": "Comme vous voyez sur la photo j'me prends pour Maitre Gims ou DJ Snake",
       "coordonnees": {
-        "latitude": "",
-        "longitude": ""
+        "latitude": "47.0810",
+        "longitude": "2.3988"
       }
     },
     {
@@ -183,13 +188,13 @@
     {
       "id": 16,
       "nom": "LAFOUASSE",
-      "prenom": "Valerie",
-      "ville": "",
+      "prenom": "Valérie",
+      "ville": "Surgères",
       "avatar": "../Images/Avatar/LAFOUASSE Valerie.jpg",
-      "anecdotes": "",
+      "anecdotes": "j’adore cuisiner et j’ai un petit faible pour le chocolat, à tel point que chaque année je fais un atelier chocolat avec des amis, et on prépare des kilos de rochers pralinés et autres bouchées !",
       "coordonnees": {
-        "latitude": "",
-        "longitude": ""
+        "latitude": "46.1064",
+        "longitude": "-0.7533"
       }
     },
     {
@@ -256,12 +261,12 @@
       "id": 22,
       "nom": "RIMIZE",
       "prenom": "Yoan",
-      "ville": "",
+      "ville": "Paris",
       "avatar": "../Images/Avatar/RIMIZE Yoan.jpg",
-      "anecdotes": "",
+      "anecdotes": "Petit je rêvais d'être pilote d'avion.. N'ayant pas fait les études pour, je voyage en éco et non dans le cockpit !",
       "coordonnees": {
-        "latitude": "",
-        "longitude": ""
+        "latitude": "48.8566",
+        "longitude": "2.3522"
       }
     },
     {

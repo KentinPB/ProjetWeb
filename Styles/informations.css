@@ -1,95 +1,316 @@
+/* ==========================================
+   STRUCTURE PRINCIPALE & CONTENEURS
+   ========================================== */
 main {
     display: flex;
     flex-direction: column;
     flex: 1;
 }
 
+/* Section du haut (Informations Générales) */
 .informations-section {
-    background-color: #b89494;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px;
+    border-radius: 24px;
+    border: 1px solid rgba(61, 227, 255, 0.25);
+    box-shadow: 0 0 30px rgba(61, 227, 255, 0.08);
+    background: var(--surface);
+    padding: 26px;
+    margin: 20px auto;
+    width: min(100%, 1400px);
+    max-width: 90vw;
+    color: var(--text);
     text-align: center;
+    box-sizing: border-box;
 }
 
-.nbr-apprenants {
-    background-color: #b89494;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px;
-    text-align: center;
+.nbr-apprenants-text {
+    margin-top: 10px;
 }
 
+/* Le Grand Conteneur Global englobant la Description et les Liens */
 .description-liens {
+    background: var(--surface);
+    border: 1px solid rgba(61, 227, 255, 0.22);
+    box-shadow: 0 0 40px rgba(61, 227, 255, 0.06);
+    border-radius: 28px;
+    padding: 30px;
+    width: min(100%, 1400px);
+    max-width: 90vw;
+    margin: 20px auto;
+    box-sizing: border-box;
+
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    background-color: #b89494;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px;
-    text-align: center;
+    /* Utilisation de minmax(0, 1fr) pour éviter le débordement */
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+        "title title"
+        "description liens";
+    gap: 32px;
+    align-items: start;
 }
 
-.Description {
-    background-color: #917b7b;
-    border-radius: 10px;
-    margin: 10px;
+.description-liens > h2 {
+    grid-area: title;
+    justify-self: center;
+    text-align: center;
+    margin: 0;
 }
+
+.description-liens > .Description {
+    grid-area: description;
+    min-width: 0; /* Empêche le dépassement */
+}
+
+.description-liens > .Liens {
+    grid-area: liens;
+    min-width: 0; /* Empêche le dépassement */
+}
+
+/* ==========================================
+   BLOCS ENFANTS - DESCRIPTION & LIENS (MÊME TAILLE)
+   ========================================== */
+
+/* Bloc Description (Gauche) */
+.Description {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 45, 149, 0.25); 
+    box-shadow: 0 0 20px rgba(255, 45, 149, 0.03);
+    border-radius: 20px;
+    padding: 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Répartit l'espace vertical de manière fluide */
+}
+
+/* Bloc Liens Utiles (Droite) */
+.Liens {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(61, 227, 255, 0.25); 
+    box-shadow: 0 0 20px rgba(61, 227, 255, 0.03);
+    border-radius: 20px;
+    padding: 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Titres principaux des blocs (Gauche et Droite) */
+.description,
+.liens-utiles {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--text);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.Liens nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+    justify-content: space-between; /* Aligne l'espacement des 3 blocs de droite sur la hauteur globale */
+}
+
+/* ==========================================
+   SOUS-ELEMENTS INTERNES : DESCRIPTION (GAUCHE)
+   ========================================== */
 
 .description-text {
-    background-color: #b89494;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px;
-    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 14px;
+    padding: 18px;
+    margin-top: 14px;
+    box-sizing: border-box;
+    border-left: 4px solid; 
+    flex: 1; /* Permet aux paragraphes de se partager équitablement la hauteur */
+    display: flex;
+    align-items: center; /* Centre verticalement le texte pour un meilleur rendu */
 }
 
-.Liens {
-    background-color: #917b7b;
-    border-radius: 10px;
-    margin: 10px;
+.description-text:nth-of-type(1) { border-color: #ff2d95; box-shadow: 0 0 10px rgba(255, 45, 149, 0.05); margin-top: 0; }
+.description-text:nth-of-type(2) { border-color: #3de3ff; box-shadow: 0 0 10px rgba(61, 227, 255, 0.05); }
+.description-text:nth-of-type(3) { border-color: #b14eff; box-shadow: 0 0 10px rgba(177, 78, 255, 0.05); }
+.description-text:nth-of-type(4) { border-color: #00ff88; box-shadow: 0 0 10px rgba(0, 255, 136, 0.05); }
+
+.promo-description {
+    color: var(--accent); 
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.95rem;
+    text-align: center;
+    margin-bottom: 15px !important;
 }
+
+.description-text strong {
+    color: #0096b4; 
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   SOUS-ELEMENTS INTERNES : LIENS UTILES (DROITE CORRIGÉ)
+   ========================================== */
 
 .categorie-liens {
-    background-color: #b89494;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px;
-    text-align: center;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    padding: 16px;
+    box-sizing: border-box;
+    border: 1px solid transparent;
+    transition: background 0.2s, border-color 0.2s;
 }
 
 .categorie-liens h3 {
-    margin-bottom: 10px;
-    text-decoration: underline;
-    text-align: center;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: left;
+    padding-left: 4px;
 }
 
-nav {
-    background-color: #747579;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px;
-}
-
-nav ul {
+/* Puisque la boîte de droite s'élargit, on organise les liens sur 2 colonnes pour optimiser l'espace */
+.categorie-liens ul {
     list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+}
+
+.categorie-liens li a {
+    display: block;
+    background: rgba(215, 215, 216, 0.04);
+    border: 1px solid rgba(145, 74, 74, 0.08);
+    padding: 10px 14px;
+    border-radius: 10px;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center; /* Centrage du texte à l'intérieur du badge */
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- THEMATISATION SPECIFIQUE DES BLOCS DE DROITE --- */
+
+/* 1. Sites de formation (Violet) */
+.categorie-liens:nth-of-type(1) { border-color: rgba(177, 78, 255, 0.25); }
+.categorie-liens:nth-of-type(1) h3 { color: #8a2be2; }
+.categorie-liens:nth-of-type(1) li a:hover {
+    background: rgba(177, 78, 255, 0.1);
+    border-color: #b14eff;
+    color: #6a0dad;
+    box-shadow: 0 0 12px rgba(177, 78, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+/* 2. Documentation (Vert) */
+.categorie-liens:nth-of-type(2) { border-color: rgba(0, 204, 102, 0.25); }
+.categorie-liens:nth-of-type(2) h3 { color: #00aa55; }
+.categorie-liens:nth-of-type(2) li a:hover {
+    background: rgba(0, 204, 102, 0.1);
+    border-color: #00cc66;
+    color: #007733;
+    box-shadow: 0 0 12px rgba(0, 204, 102, 0.25);
+    transform: translateY(-2px);
+}
+
+/* 3. Apprentissage interactif (Rose) */
+.categorie-liens:nth-of-type(3) { border-color: rgba(255, 45, 149, 0.25); }
+.categorie-liens:nth-of-type(3) h3 { color: #d81b7a; }
+.categorie-liens:nth-of-type(3) li a:hover {
+    background: rgba(255, 45, 149, 0.1);
+    border-color: #ff2d95;
+    color: #b01266;
+    box-shadow: 0 0 12px rgba(255, 45, 149, 0.25);
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   ADAPTATION TOTALE POUR LE MODE SOMBRE
+   ========================================== */
+body.dark-mode .description-text strong {
+    color: var(--accent-2);
+}
+body.dark-mode .categorie-liens li a {
+    background: rgba(250, 0, 0, 0.02);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #e7f1ff;
+}
+body.dark-mode .categorie-liens:nth-of-type(1) h3 { color: #b14eff; }
+body.dark-mode .categorie-liens:nth-of-type(1) li a:hover { color: #b14eff; }
+
+body.dark-mode .categorie-liens:nth-of-type(2) h3 { color: #00ff88; }
+body.dark-mode .categorie-liens:nth-of-type(2) li a:hover { color: #00ff88; }
+
+body.dark-mode .categorie-liens:nth-of-type(3) h3 { color: #ff2d95; }
+body.dark-mode .categorie-liens:nth-of-type(3) li a:hover { color: #ff2d95; }
+
+
+/* ==========================================
+   TEXTES ET BOUTONS GENERAUX
+   ========================================== */
+.Description p,
+.description-text p,
+.categorie-liens p,
+.informations-section p {
+    line-height: 1.7;
+    color: var(--text);
+    margin: 0;
 }
 
 .btn-retour {
-    background-color: #747579;
-    border-radius: 10px;
-    padding: 10px 20px;
-    color: #fff;
+    background: linear-gradient(135deg, rgba(255, 45, 149, 0.95), rgba(61, 227, 255, 0.9));
+    border-radius: 16px;
+    padding: 14px 24px;
+    color: #08101f;
     border: none;
     cursor: pointer;
-    margin: 20px;
-    width: 50%;
-    margin-left: 25%;
+    display: block;
+    margin: 40px auto;
+    width: min(280px, 90%);
+    font-weight: 700;
+    box-shadow: 0 0 22px rgba(61, 227, 255, 0.18);
+    transition: transform 0.2s, opacity 0.2s;
 }
 
 .btn-retour:hover {
-    background-color: #917b7b;
+    opacity: 0.95;
+    transform: translateY(-2px);
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN MODIFIÉ
+   ========================================== */
+@media screen and (min-width: 901px) {
+    .description-liens {
+        /* Force la répartition exacte à 50% / 50% */
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .description-liens {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "title"
+            "description"
+            "liens";
+    }
+    
+    .informations-section {
+        max-width: 95vw;
+    }
+    /* Sur mobile, on repasse les boutons sur une seule colonne */
+    .categorie-liens ul {
+        grid-template-columns: 1fr;
+    }
 }
