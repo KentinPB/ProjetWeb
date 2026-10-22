@@ -173,10 +173,10 @@ function createTable(apprenants) {
         cellVille.setAttribute('data-label', headers[2]);
         row.appendChild(cellVille);
 
-        // Cellule Lien de détails
+        // Cellule Détail : un bouton (action sur la page) et non un lien href="#" (navigation vers rien)
         const cellDetail = document.createElement("td");
-        const lien = document.createElement("a");
-        lien.href = "#";
+        const lien = document.createElement("button");
+        lien.type = "button";
         lien.className = "lien-detail";
         lien.textContent = _isEn ? "Detail" : "Détail";
         lien.dataset.index = index; // Stocke l'index pour l'événement au clic
@@ -312,10 +312,9 @@ function attachDetailListeners() {
         });
     });
 
-    // Écouteurs pour le mode Liste (Liens hypertextes du tableau)
+    // Écouteurs pour le mode Liste (Boutons du tableau)
     document.querySelectorAll('.lien-detail').forEach(function (lien) {
-        lien.addEventListener('click', function (event) {
-            event.preventDefault(); // Évite le saut de page lié à l'ancre "#"
+        lien.addEventListener('click', function () {
             showModal(parseInt(this.dataset.index));
         });
     });
