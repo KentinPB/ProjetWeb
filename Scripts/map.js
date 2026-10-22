@@ -50,11 +50,17 @@ async function initializeMap() {
             }
 
             // Création de l'épingle sur la carte, liaison d'une popup au clic, et stockage dans notre tableau
+            // Contenu de la bulle construit avec des nœuds DOM et textContent (et non une chaîne HTML) :
+            // un nom contenant du HTML, par exemple <img onerror=...>, est affiché comme du texte au lieu d'être exécuté.
+            const popup = document.createElement('span');
+            const nom = document.createElement('b');
+            nom.textContent = apprenant.nom || '';
+            popup.append(nom, ' ', apprenant.prenom || '');
+
             markers.push(
                 L.marker([lat, lng])
                     .addTo(map)
-                    // Texte HTML affiché à l'intérieur de la bulle lors d'un clic sur l'épingle
-                    .bindPopup(`<b>${apprenant.nom || ''}</b> ${apprenant.prenom || ''}`)
+                    .bindPopup(popup)
             );
         });
 
