@@ -243,7 +243,7 @@ function getTranslation(langue, key) {
  */
 function getPageTitleKey() {
     const path = window.location.pathname.toLowerCase();
-    if (path.includes("préférences.html") || path.includes("preferences.html")) {
+    if (path.includes("preferences.html")) {
         return "title.preferences";
     }
     if (path.includes("informations.html")) {

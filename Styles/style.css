@@ -76,7 +76,7 @@ body.dark-mode {
 /* Force les grands conteneurs à adopter la couleur de surface sombre */
 body.dark-mode header,
 body.dark-mode footer,
-body.dark-mode .préférences-section,
+body.dark-mode .preferences-section,
 body.dark-mode .preferences-form {
     background-color: var(--surface-strong);
     color: var(--text);

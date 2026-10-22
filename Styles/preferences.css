@@ -1,7 +1,7 @@
 /* =========================================================================
    CONTENEUR PRINCIPAL DE LA SECTION DE CONFIGURATION
    ========================================================================= */
-.préférences-section {
+.preferences-section {
     background: var(--surface);
     display: flex;
     flex-direction: column;     /* Aligne le titre de section et le formulaire verticalement */
