@@ -12,10 +12,11 @@ L'objectif principal de cette application est de mettre en pratique et de consol
 * **Structuration sémantique :** Utilisation des balises appropriées (`<header>`, `<nav>`, `<main>`, `<article>`, `<section>`) pour garantir un code lisible et accessible.
 * **Gestion des attributs de données :** Utilisation intensive des attributs `data-*` (ex: `data-i18n`, `data-index`, `data-label`) pour créer un pont solide entre le HTML, le CSS et le JavaScript.
 * **Intégration d'éléments riches :** Mise en place d'une fenêtre modale (pop-up) nativement intégrée dans le flux du document.
+* **Accessibilité de la modale :** `role="dialog"`, `aria-modal`, bouton de fermeture avec `aria-label`, fermeture par la touche Échap et retour du focus clavier sur le bouton « Détail ».
 
 ### 🎨 CSS3 : Design Adaptatif et Thémisation
 * **Variables CSS (Custom Properties) :** Définition des couleurs, typographies et espacements via `:root` pour faciliter la maintenance et la création du thème sombre.
-* **Responsive Design (Mobile-First) :** * Utilisation des **Media Queries** (`@media`) pour adapter l'interface aux smartphones, tablettes et écrans larges.
+* **Responsive Design :** Utilisation des **Media Queries** (`@media`) pour adapter l'interface aux smartphones, tablettes et écrans larges. La mise en page a été conçue d'abord pour ordinateur, puis adaptée aux petits écrans (`max-width`).
   * *Technique avancée :* Restructuration complète du tableau HTML sur les petits écrans. Les lignes (`<tr>`) deviennent des cartes empilées, et les en-têtes sont générés dynamiquement via la propriété `content: attr(data-label)` pour éviter que le tableau ne casse la mise en page.
 * **Flexbox & Grid :** Alignement dynamique des éléments et création de la grille de cartes du trombinoscope.
 
@@ -46,11 +47,12 @@ ProjetWeb/
 ├── HTML/
 │   ├── index.html              # Trombinoscope principal
 │   ├── carte.html              # Affichage de la carte
-│   └── ...                     # Pages d'informations et de préférencesStyles/
+│   ├── informations.html       # Informations sur la promo
+│   └── preferences.html        # Préférences (langue, thème, affichage)
 ├── Images/
 │   ├── Avatar
-│   │    └── NOM Prenom.jpg    # Avatar définit utilisées pour les cartes
-│   ├── avatar.png             # Avatar par défaut si non définit 
+│   │    └── NOM Prenom.jpg    # Avatars utilisés pour les cartes
+│   ├── avatar.png             # Avatar par défaut si aucun n'est défini
 │   └── logo.png               # Logo de l'école
 ├── Scripts/
 │   ├── main.js                 # Point d'entrée, coordonne les modules
@@ -62,3 +64,12 @@ ProjetWeb/
     ├── index.css               # Mise en page du tableau (responsive) et des cartes
     ├── carte.css               # Styles du conteneur Leaflet
     └── ...                     # Autres fichiers CSS spécifiques aux vues
+
+---
+
+## ▶️ Lancer le projet
+
+Les données sont chargées avec `fetch()`, qui ne fonctionne pas en ouvrant directement le fichier (`file://`). Il faut passer par un serveur web local, par exemple :
+
+* l'extension **Live Server** de VS Code, en ouvrant `HTML/index.html` ;
+* ou, depuis la racine du projet : `php -S localhost:8000`, puis `http://localhost:8000/HTML/index.html`.
