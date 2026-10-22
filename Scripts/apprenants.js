@@ -223,12 +223,19 @@ function createModal() {
     const existingModal = document.getElementById('apprenant-modal');
     if (existingModal) return; // Évite les doublons de modales
 
+    const _isEnClose = (document.documentElement.lang || 'fr').startsWith('en');
+
     const modal = document.createElement('div');
     modal.id = 'apprenant-modal';
     modal.className = 'modal';
+    // role="dialog" + aria-modal : un lecteur d'écran annonce une fenêtre de dialogue et ignore la page derrière.
+    // aria-labelledby : la fenêtre porte le nom de l'apprenant affiché dans le titre.
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'modal-nom');
     modal.innerHTML = `
         <div class="modal-content">
-            <span class="modal-close">&times;</span>
+            <button type="button" class="modal-close" aria-label="${_isEnClose ? 'Close' : 'Fermer'}">&times;</button>
             <div class="modal-body">
                 <img id="modal-avatar" class="modal-avatar" src="" alt="">
                 <h2 id="modal-nom"></h2>
@@ -249,7 +256,17 @@ function createModal() {
             closeModal();
         }
     });
+
+    // Fermeture au clavier avec la touche Échap
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
 }
+
+// Élément qui avait le focus avant l'ouverture (le bouton « Détail ») : il le retrouve à la fermeture.
+let elementAvantModale = null;
 
 /**
  * Remplit dynamiquement et affiche la modale avec les données de l'apprenant sélectionné.
@@ -289,6 +306,10 @@ function showModal(index) {
     modal.querySelector('#modal-anecdotes').textContent = apprenant.anecdotes || '';
     
     modal.classList.add('active'); // Active la visibilité de la modale via CSS
+
+    // Place le focus clavier dans la fenêtre, sur le bouton de fermeture
+    elementAvantModale = document.activeElement;
+    modal.querySelector('.modal-close').focus();
 }
 
 /**
@@ -299,6 +320,11 @@ function closeModal() {
     if (modal) {
         modal.classList.remove('active');
     }
+    // Rend le focus à l'élément qui a ouvert la fenêtre, pour que la navigation au clavier reprenne au même endroit
+    if (elementAvantModale && document.contains(elementAvantModale)) {
+        elementAvantModale.focus();
+    }
+    elementAvantModale = null;
 }
 
 /**
