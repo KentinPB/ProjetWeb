@@ -4,6 +4,8 @@ Ce projet a été conçu et développé de A à Z dans le cadre de la formation 
 
 L'objectif principal de cette application est de mettre en pratique et de consolider les fondamentaux du développement web front-end natif : **HTML5, CSS3 et JavaScript (Vanilla)**, sans faire appel à des frameworks externes (comme React ou Bootstrap). Le projet propose d'explorer les profils des apprenants de la promotion via un affichage hybride (liste/cartes) et une carte géographique interactive.
 
+🌐 **Démonstration en ligne :** https://kentinpb.github.io/ProjetWeb/HTML/index.html
+
 ---
 
 ## 💻 Compétences Techniques Démontrées
